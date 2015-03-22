@@ -1,0 +1,22 @@
+server:
+	mail
+
+
+
+
+
+client:
+	Server ! {self(), buddies}
+	  ->Client ! {a,b,c}
+	  
+	Server ! {self(), a, blahblah}
+	  ->a ! {Client, blahblah}
+	  ->Client ! {ok}
+	  
+	Server ! {self(), login}
+	  
+	Server ! {self(), logout}
+	  -> Client ! {ok}
+	  
+	Server ! {self(), message, Name, Message}
+	  -> Name ! {message, From, Message}
